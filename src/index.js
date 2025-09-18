@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const {PORT} = require('./config/serverConfig');
+const ApiRoutes = require('./routes/index');
 
 require('dotenv').config()
 const setupAndStartServer = async() => {
@@ -11,6 +12,8 @@ const setupAndStartServer = async() => {
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
+
+    app.use('/api', ApiRoutes);
 
 
     // const PORT = 3000; //previously when the code was only in this file
