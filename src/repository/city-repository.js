@@ -38,7 +38,8 @@ class CityRepository {
             //     where: {
             //         id: cityId
             //     },
-            //      
+            //     returning: true,
+            //     plain: true
             // });
             // for getting updated data in mysql we use the below approach
             const city = await City.findByPk(cityId);
