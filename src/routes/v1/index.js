@@ -12,6 +12,8 @@ router.get('/city', CityController.getAll);
 router.patch('/city/:id', CityController.update);
 router.post('/cities', CityController.createMany);
 
+router.get('/city/:id/airports', CityController.getAirports);
+
 router.post('/airports', AirportController.create);
 router.delete('/airports/:id', AirportController.destroy);
 router.get('/airports/:id', AirportController.get);

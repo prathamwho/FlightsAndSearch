@@ -92,6 +92,19 @@ class CityRepository {
         }
     }
 
+    async getCityWithAirports(cityId) {
+        try {
+            const city = await City.findByPk(cityId, {
+                include: [{
+                    model: require('../models').Airport
+                }]
+            });
+            return city;
+        } catch (error) {
+            console.log("Something went wrong in the repository layer");
+            throw { error };
+        }
+    }
 }
 
 module.exports = CityRepository;

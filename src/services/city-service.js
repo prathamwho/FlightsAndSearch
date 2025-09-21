@@ -66,6 +66,16 @@ class CityService {
         }
     }
 
+    async getAirportsOfCity(cityId) {
+        try {
+            const city = await this.cityRepository.getCityWithAirports(cityId);
+            return city.Airports; // 'Airports' is the name of the association
+        } catch (error) {
+            console.log("Something went wrong at service layer");
+            throw { error };
+        }
+    }
+
 }
 
 module.exports = CityService;
