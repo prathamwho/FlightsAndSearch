@@ -11,7 +11,18 @@ class CityService {
             return city;
         } catch (error) {
             console.log("Something went wrong at service layer");
-            throw {error};
+            throw { error };
+        }
+    }
+
+    async createManyCities(cities) {
+        try {
+            // The request body will be an array of objects e.g. [{name: 'Delhi'}, {name: 'Pune'}]
+            const city = await this.cityRepository.createManyCities(cities);
+            return city;
+        } catch (error) {
+            console.log("Something went wrong at service layer");
+            throw { error };
         }
     }
 
@@ -21,7 +32,7 @@ class CityService {
             return response;
         } catch (error) {
             console.log("Something went wrong at service layer");
-            throw {error};
+            throw { error };
         }
     }
 
@@ -31,7 +42,7 @@ class CityService {
             return city;
         } catch (error) {
             console.log("Something went wrong at service layer");
-            throw {error};
+            throw { error };
         }
     }
 
@@ -41,17 +52,17 @@ class CityService {
             return city;
         } catch (error) {
             console.log("Something went wrong at service layer");
-            throw {error};
+            throw { error };
         }
     }
 
     async getAllCities(filter) {
         try {
-            const cities = await this.cityRepository.getAllCities({name: filter.name});
+            const cities = await this.cityRepository.getAllCities({ name: filter.name });
             return cities;
         } catch (error) {
             console.log("Something went wrong at service layer");
-            throw {error};
+            throw { error };
         }
     }
 }
