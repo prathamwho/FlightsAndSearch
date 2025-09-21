@@ -65,6 +65,7 @@ class CityService {
             throw { error };
         }
     }
+
 }
 
 module.exports = CityService;
