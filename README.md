@@ -1,7 +1,6 @@
 # Flights & Search Service
 
 A robust backend service for managing and searching for flights, built with Node.js, Express, and Sequelize.
-![Service Structure](service-structure.png)
 
 ---
 
