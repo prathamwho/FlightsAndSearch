@@ -3,7 +3,8 @@ const express = require('express');
 const CityController = require('../../controllers/city-controller');
 const AirportController = require('../../controllers/airport-controller');
 const FlightController = require('../../controllers/flight-controller');
-const FlightMiddlewares = require('../../middlewares/flight-middlewares');
+
+const { FlightMiddlewares } = require('../../middlewares/index');
 
 const router = express.Router();
 
