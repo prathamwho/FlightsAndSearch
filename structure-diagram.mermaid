@@ -1,0 +1,44 @@
+erDiagram
+    CITY {
+        int id PK
+        string name
+        datetime createdAt
+        datetime updatedAt
+    }
+
+    AIRPORT {
+        int id PK
+        string name
+        string address
+        int cityId FK
+        datetime createdAt
+        datetime updatedAt
+    }
+
+    AIRPLANE {
+        int id PK
+        string modelNumber
+        int capacity
+        datetime createdAt
+        datetime updatedAt
+    }
+
+    FLIGHT {
+        int id PK
+        string flightNumber
+        int airplaneId FK
+        int departureAirportId FK
+        int arrivalAirportId FK
+        datetime departureTime
+        datetime arrivalTime
+        int price
+        string boardingGate
+        int totalSeats
+        datetime createdAt
+        datetime updatedAt
+    }
+
+    CITY ||--o{ AIRPORT : "has"
+    AIRPLANE ||--o{ FLIGHT : "operates"
+    AIRPORT ||--o{ FLIGHT : "departs from"
+    AIRPORT ||--o{ FLIGHT : "arrives at"
