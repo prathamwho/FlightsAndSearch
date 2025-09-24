@@ -6,8 +6,9 @@ class CityRepository {
 
     async createCity({ name }) {
         try {
-            const city = await City.create({
-                name
+            const [city, created] = await City.findOrCreate({
+                where: { name: name },
+                defaults: { name: name }
             });
             return city;
         } catch (error) {
@@ -40,18 +41,8 @@ class CityRepository {
         }
     }
 
-    async updateCity(cityId, data) { // {name: "Prayagraj"}
+    async updateCity(cityId, data) {
         try {
-            // The below approach also works but will not return updated object
-            // if we are using Pg then returning: true can be used, else not
-            // const city = await City.update(data, {
-            //     where: {
-            //         id: cityId
-            //     },
-            //     returning: true,
-            //     plain: true
-            // });
-            // for getting updated data in mysql we use the below approach
             const city = await City.findByPk(cityId);
             city.name = data.name;
             await city.save();
@@ -72,7 +63,7 @@ class CityRepository {
         }
     }
 
-    async getAllCities(filter) { // filter can be empty also
+    async getAllCities(filter) {
         try {
             if (filter.name) {
                 const cities = await City.findAll({

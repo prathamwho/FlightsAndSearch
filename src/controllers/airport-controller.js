@@ -1,11 +1,12 @@
 const { AirportService } = require('../services/index');
+const { SuccessCodes, ServerErrorCodes } = require('../utils/error-codes');
 
 const airportService = new AirportService();
 
 const create = async (req, res) => {
     try {
-        const response = await airportService.create(req.body); // Use generic 'create'
-        return res.status(201).json({
+        const response = await airportService.create(req.body);
+        return res.status(SuccessCodes.CREATED).json({
             data: response,
             success: true,
             message: 'Successfully created an airport',
@@ -13,7 +14,7 @@ const create = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
+        return res.status(ServerErrorCodes.INTERNAL_SERVER_ERROR).json({
             data: {},
             success: false,
             message: 'Not able to create an airport',
@@ -24,8 +25,8 @@ const create = async (req, res) => {
 
 const destroy = async (req, res) => {
     try {
-        const response = await airportService.destroy(req.params.id); // Use generic 'destroy'
-        return res.status(200).json({
+        const response = await airportService.destroy(req.params.id); 
+        return res.status(SuccessCodes.OK).json({
             data: response,
             success: true,
             message: 'Successfully deleted an airport',
@@ -33,7 +34,7 @@ const destroy = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
+        return res.status(ServerErrorCodes.INTERNAL_SERVER_ERROR).json({
             data: {},
             success: false,
             message: 'Not able to delete the airport',
@@ -44,8 +45,8 @@ const destroy = async (req, res) => {
 
 const get = async (req, res) => {
     try {
-        const response = await airportService.get(req.params.id); // Use generic 'get'
-        return res.status(200).json({
+        const response = await airportService.get(req.params.id);
+        return res.status(SuccessCodes.OK).json({
             data: response,
             success: true,
             message: 'Successfully fetched an airport',
@@ -53,7 +54,7 @@ const get = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
+        return res.status(ServerErrorCodes.INTERNAL_SERVER_ERROR).json({
             data: {},
             success: false,
             message: 'Not able to get the airport',
@@ -64,8 +65,8 @@ const get = async (req, res) => {
 
 const update = async (req, res) => {
     try {
-        const response = await airportService.update(req.params.id, req.body); // Use generic 'update'
-        return res.status(200).json({
+        const response = await airportService.update(req.params.id, req.body);
+        return res.status(SuccessCodes.OK).json({
             data: response,
             success: true,
             message: 'Successfully updated an airport',
@@ -73,7 +74,7 @@ const update = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
+        return res.status(ServerErrorCodes.INTERNAL_SERVER_ERROR).json({
             data: {},
             success: false,
             message: 'Not able to update the airport',
@@ -84,8 +85,8 @@ const update = async (req, res) => {
 
 const getAll = async (req, res) => {
     try {
-        const response = await airportService.getAll(); // Use generic 'getAll'
-        return res.status(200).json({
+        const response = await airportService.getAll();
+        return res.status(SuccessCodes.OK).json({
             data: response,
             success: true,
             message: 'Successfully fetched all airports',
@@ -93,7 +94,7 @@ const getAll = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
+        return res.status(ServerErrorCodes.INTERNAL_SERVER_ERROR).json({
             data: {},
             success: false,
             message: 'Not able to fetch the airports',

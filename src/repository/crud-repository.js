@@ -1,4 +1,4 @@
-class CrudRespository {
+class CrudRepository {
     constructor(model) {
         this.model = model;
     }
@@ -63,4 +63,4 @@ class CrudRespository {
     }
 }
 
-module.exports = CrudRespository;
+module.exports = CrudRepository;

@@ -68,12 +68,13 @@
 // }
 
 // module.exports = AirportRepository;
+
 const CrudRepository = require('./crud-repository');
 const { Airport } = require('../models/index');
 
 class AirportRepository extends CrudRepository {
     constructor() {
-        super(Airport); // Pass the Airport model to the parent blueprint
+        super(Airport); 
     }
 }
 
